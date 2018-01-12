@@ -1,0 +1,45 @@
+{
+  "name": "static-web-archive-on-git",
+  "version": "1.0.0",
+  "description": "A module that maintains a static web archive that you can add to piece by piece. For image bots in particular.",
+  "main": "create-posting-stream-chain.js",
+  "scripts": {
+    "test": "make test"
+  },
+  "private": true,
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:jimkang/static-web-archive-on-git.git"
+  },
+  "keywords": [],
+  "author": "Jim Kang",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jimkang/static-web-archive-on-git/issues"
+  },
+  "homepage": "https://github.com/jimkang/static-web-archive-on-git",
+  "devDependencies": {
+    "assert-no-error": "^1.0.0",
+    "longjohn": "^0.2.12",
+    "tape": "^4.6.0",
+    "through-stream-testbed": "^1.0.0"
+  },
+  "dependencies": {
+    "async-waterfall": "^0.1.5",
+    "call-next-tick": "^2.0.1",
+    "d3-array": "^1.1.1",
+    "d3-queue": "^3.0.5",
+    "github-file": "^1.1.2",
+    "idmaker": "^0.1.1",
+    "lodash.clonedeep": "^4.5.0",
+    "lodash.curry": "^4.1.1",
+    "lodash.defaults": "^4.2.0",
+    "lodash.omit": "^4.5.0",
+    "lodash.pluck": "^3.1.2",
+    "ndjson": "^1.5.0",
+    "probable": "^2.1.1",
+    "request": "^2.81.0",
+    "standard-bail": "^2.0.1",
+    "through2": "^2.0.3"
+  }
+}
