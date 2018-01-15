@@ -66,7 +66,7 @@ function BufferToGit(opts) {
 }
 
 function wait(done) {
-  setTimeout(done, 1000);
+  setTimeout(done, 2000);
 }
 
 module.exports = BufferToGit;

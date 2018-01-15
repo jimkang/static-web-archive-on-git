@@ -7,7 +7,11 @@ function establishLastPageIndex(githubFile, indexFileLocation, establishDone) {
     if (gitResult.length < 1) {
       // It doesn't exist, so create it.
       githubFile.update(
-        { filePath: indexFileLocation, content: '0' },
+        {
+          filePath: indexFileLocation,
+          content: '0',
+          message: 'static-web-archive-on-git posting last page index'
+        },
         sb(passZero, establishDone)
       );
     } else {

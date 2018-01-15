@@ -3,6 +3,8 @@ static-web-archive-on-git
 
 A module that maintains a static web archive that you can add to piece by piece. For image bots in particular.
 
+Requires a version of Node that supports ES 6.
+
 Installation
 ------------
 
@@ -59,6 +61,7 @@ After the above runs, in the git repo, there will be:
 
 - An `index.html` that contains the latest n posts. If there are more than n total entries, there will be a `1.html`, a `2.html`, and so forth containing previous entries. The footer of each will link to previous pages.
 - HTML files in the root directory for each individual post.
+- The HTML files refer to an `app.css`. It's up to you to add that to your web archive repo.
 - A `/media/` directory containing the given media files.
 - A `/meta` directory containing line-delimited JSON that has the contents of the posts and a `last-page.txt` file that tells this module what the last page is so that it knows which index to update.
 

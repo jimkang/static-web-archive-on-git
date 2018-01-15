@@ -1,4 +1,7 @@
-function getHeader() {
+var titleRefRegex = /_TITLE_REF/g;
+var footerScriptRegex = /_FOOTER_SCRIPT_REF/g;
+
+function getHeader(title) {
   return `<html>
   <head>
     <title>_TITLE_REF</title>
@@ -13,10 +16,10 @@ function getHeader() {
   <h1>_TITLE_REF</h1>
 
   <section class="media">
-    <ul class="media-list">`;
+    <ul class="media-list">`.replace(titleRefRegex, title);
 }
 
-function getFooter({ previousIndexHTML }) {
+function getFooter({ previousIndexHTML, footerScript }) {
   return `</ul>
   </section>
 
@@ -25,7 +28,7 @@ function getFooter({ previousIndexHTML }) {
   _FOOTER_SCRIPT_REF
 
   </body>
-  </html>`;
+  </html>`.replace(footerScriptRegex, footerScript);
 }
 
 module.exports = {

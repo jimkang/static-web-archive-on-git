@@ -8,8 +8,13 @@ var request = require('request');
 var AddCellsToPagesInGit = require('./transforms/add-cells-to-pages-in-git');
 var UpdateIndexHTMLInGit = require('./transforms/update-index-html-in-git');
 var AddSinglePageInGit = require('./transforms/add-single-page-in-git');
+var defaults = require('lodash.defaults');
 
-function createPostingStreamChain({config}) {
+function createPostingStreamChain({
+  config,
+  title = 'A Static Web Archive',
+  footerScript = ''
+}) {
   var gitOpts = {
     branch: 'gh-pages',
     gitRepoOwner: config.gitRepoOwner,
@@ -23,8 +28,12 @@ function createPostingStreamChain({config}) {
 
   var bufferToGit = BufferToGit(gitOpts);
   var addCellsToPagesInGit = AddCellsToPagesInGit(gitOpts);
-  var updateIndexHTMLInGit = UpdateIndexHTMLInGit(gitOpts);
-  var addSinglePageInGit = AddSinglePageInGit(gitOpts);
+  var updateIndexHTMLInGit = UpdateIndexHTMLInGit(
+    defaults({ title, footerScript }, gitOpts)
+  );
+  var addSinglePageInGit = AddSinglePageInGit(
+    defaults({ title, footerScript }, gitOpts)
+  );
 
   var bufferToGitStream = createStreamWithTransform(bufferToGit, logError);
   var addHTMLFragmentStream = createStreamWithTransform(

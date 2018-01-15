@@ -7,6 +7,8 @@ var sb = require('standard-bail')();
 
 function AddSinglePageInGit(opts) {
   const htmlDir = opts.htmlDir;
+  const title = opts.title;
+  const footerScript = opts.footerScript;
 
   var githubFileForText = GitHubFile(
     defaults(cloneDeep(opts), {
@@ -19,11 +21,11 @@ function AddSinglePageInGit(opts) {
 
   function addSinglePageInGit(cellToAdd, enc, addCellsDone) {
     var html =
-      template.getHeader() +
+      template.getHeader(title) +
       '\n' +
       cellToAdd.htmlFragment +
       '\n' +
-      template.getFooter({ previousIndexHTML: '' });
+      template.getFooter({ previousIndexHTML: '', footerScript });
 
     var filePath = '';
     if (htmlDir) {
@@ -34,13 +36,14 @@ function AddSinglePageInGit(opts) {
     githubFileForText.update(
       {
         filePath: filePath,
-        content: html
+        content: html,
+        message: 'static-web-archive-on-git posting single entry HTML'
       },
       sb(passResultsAfterDelay, addCellsDone)
     );
 
     function passResultsAfterDelay() {
-      setTimeout(passResults, 1000);
+      setTimeout(passResults, 2000);
     }
 
     function passResults() {

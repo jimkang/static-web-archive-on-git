@@ -11,6 +11,8 @@ var template = require('../page-template');
 
 function UpdateIndexHTMLInGit(opts) {
   const htmlDir = opts.htmlDir;
+  const title = opts.title;
+  const footerScript = opts.footerScript;
 
   var githubFileForText = GitHubFile(
     defaults(cloneDeep(opts), {
@@ -32,9 +34,10 @@ function UpdateIndexHTMLInGit(opts) {
     function makeIndexHTMLFromPage(page) {
       return makeIndexHTMLFromPageSpec({
         mostRecentPageIndex: cell.newLastPageIndex,
-        header: template.getHeader(),
+        header: template.getHeader(title),
         footer: template.getFooter({
-          previousIndexHTML: getPreviousIndexHTML(page)
+          previousIndexHTML: getPreviousIndexHTML(page),
+          footerScript
         }),
         pageSpec: page
       });
@@ -57,7 +60,8 @@ function UpdateIndexHTMLInGit(opts) {
         githubFileForText.update(
           {
             filePath: filePath,
-            content: htmlPackage.content
+            content: htmlPackage.content,
+            message: 'static-web-archive-on-git posting updating index HTML'
           },
           done
         );

@@ -89,7 +89,8 @@ function AddCellsToPagesInGit(opts) {
       githubFileForText.update(
         {
           filePath: filePath,
-          content: JSON.stringify(page.cells)
+          content: JSON.stringify(page.cells),
+          message: 'static-web-archive-on-git posting page cell metadata'
         },
         passAfterDelay
       );
