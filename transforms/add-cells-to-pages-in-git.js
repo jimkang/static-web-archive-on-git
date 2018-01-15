@@ -7,9 +7,12 @@ var GitHubFile = require('github-file');
 var waterfall = require('async-waterfall');
 var curry = require('lodash.curry');
 var queue = require('d3-queue').queue;
-var addCellsToPages = require('../add-cells-to-pages');
+var AddCellsToPages = require('../add-cells-to-pages');
 
 function AddCellsToPagesInGit(opts) {
+  var addCellsToPages = AddCellsToPages({
+    maxEntriesPerPage: opts.maxEntriesPerPage
+  });
   const metaDir = opts.metaDir;
   const lastPagePath = metaDir + '/last-page.txt';
 
@@ -124,15 +127,15 @@ function AddCellsToPagesInGit(opts) {
 // Then, you can end up getting the SHA for a file just *before* it updates from
 // that last commit. So: wait.
 function postPageUpdateDelay(pagesGitPackages, done) {
-  setTimeout(() => done(null, pagesGitPackages), 1500);
+  setTimeout(() => done(null, pagesGitPackages), 2000);
 }
 
 function prePageUpdateDelay(done) {
-  setTimeout(done, 1500);
+  setTimeout(done, 2000);
 }
 
 function postIndexUpdateDelay(content, done) {
-  setTimeout(done, 1500);
+  setTimeout(done, 2000);
 }
 
 module.exports = AddCellsToPagesInGit;

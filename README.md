@@ -19,11 +19,14 @@ So, in your program, you create an instance of this module like so:
 
     var StaticWebArchiveOnGit = require('-static-web-archive-on-git');
     var staticWebStream = StaticWebArchiveOnGit({
+      title: 'Vape bot archives',
+      footerScript: `<div>Bottom of page</div>`,
       config: {
         gitRepoOwner: 'your GitHub username',
-        gitToken: 'Your personal access token from https://github.com/settings/tokens',
+        gitToken: 'Your personal access token from https://github.com/settings/tokens (the token needs repo access)',
         repo: 'the name of the repo that contains the archive'
       },
+      maxEntriesPerPage: 25
     })
 
 Then, when the program has a new post, get it into the archive on git like so:
