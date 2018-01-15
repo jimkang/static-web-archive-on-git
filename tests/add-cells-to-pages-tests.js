@@ -1,5 +1,7 @@
 var test = require('tape');
-var addCellsToPages = require('../add-cells-to-pages');
+var AddCellsToPages = require('../add-cells-to-pages');
+
+var addCellsToPages = AddCellsToPages({});
 
 var testCases = [
   {

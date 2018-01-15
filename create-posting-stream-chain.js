@@ -13,7 +13,8 @@ var defaults = require('lodash.defaults');
 function createPostingStreamChain({
   config,
   title = 'A Static Web Archive',
-  footerScript = ''
+  footerScript = '',
+  maxEntriesPerPage
 }) {
   var gitOpts = {
     branch: 'gh-pages',
@@ -27,7 +28,9 @@ function createPostingStreamChain({
   };
 
   var bufferToGit = BufferToGit(gitOpts);
-  var addCellsToPagesInGit = AddCellsToPagesInGit(gitOpts);
+  var addCellsToPagesInGit = AddCellsToPagesInGit(
+    defaults({ maxEntriesPerPage }, gitOpts)
+  );
   var updateIndexHTMLInGit = UpdateIndexHTMLInGit(
     defaults({ title, footerScript }, gitOpts)
   );
