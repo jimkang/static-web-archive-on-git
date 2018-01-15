@@ -6,7 +6,6 @@
   "scripts": {
     "test": "make test"
   },
-  "private": true,
   "repository": {
     "type": "git",
     "url": "git@github.com:jimkang/static-web-archive-on-git.git"
