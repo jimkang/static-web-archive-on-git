@@ -64,7 +64,7 @@ After the above runs, in the git repo, there will be:
 
 - An `index.html` that contains the latest n posts. If there are more than n total entries, there will be a `1.html`, a `2.html`, and so forth containing previous entries. The footer of each will link to previous pages.
 - HTML files in the root directory for each individual post.
-- The HTML files refer to an `app.css`. It's up to you to add that to your web archive repo.
+- The HTML files refer to an `app.css`. It's up to you to add that to your web archive repo. [Here's one I use for one of my archives.](https://github.com/jimkang/static-web-archive-on-git/blob/master/meta/app.css)
 - A `/media/` directory containing the given media files.
 - A `/meta` directory containing line-delimited JSON that has the contents of the posts and a `last-page.txt` file that tells this module what the last page is so that it knows which index to update.
 

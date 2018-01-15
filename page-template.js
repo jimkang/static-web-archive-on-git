@@ -5,7 +5,7 @@ function getHeader(title) {
   return `<html>
   <head>
     <title>_TITLE_REF</title>
-    <link rel="stylesheet" href="../app.css"></link>
+    <link rel="stylesheet" href="app.css"></link>
     <meta name="viewport" content="width=device-width, initial-scale=1"></meta>
   </head>
   <body>
