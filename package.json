@@ -1,6 +1,6 @@
 {
   "name": "static-web-archive-on-git",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "A module that maintains a static web archive that you can add to piece by piece. For image bots in particular.",
   "main": "create-posting-stream-chain.js",
   "scripts": {
