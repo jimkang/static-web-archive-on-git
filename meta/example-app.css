@@ -25,7 +25,7 @@ ul {
   justify-content: center;
 }
 
-li.media-pane {
+li.pane {
   margin-bottom: 2em;
   background-color: hsl(35, 10%, 97%);
   box-shadow: 4px 4px hsla(30, 30%, 30%, 0.3);
@@ -40,7 +40,7 @@ li.media-pane {
   align-items: center;
 }
 
-.media-meta {
+.entry-meta {
   color: hsl(341, 10%, 20%);
   font-weight: bold;
 }
@@ -51,11 +51,11 @@ li.media-pane {
   margin-top: 1em;
 }
 
-.media-time-stamp {
+.time-stamp {
   margin-bottom: 1em;  
 }
 
-.media-pane video {
+.pane video {
   border-left: 1px solid hsla(30, 14%, 67%, 0.5);
   box-shadow: 2px 2px hsla(30, 5%, 0%, 0.3);
   width: 100%;

@@ -10,31 +10,30 @@ function addHTMLFragment(cell, enc, done) {
   var formattedDate = cellDate.toISOString();
   var readableDate = cellDate.toLocaleString();
 
+  cell.htmlFragment = `<li class="pane">
+  <div class="time-stamp entry-meta">
+    <a href="${cell.id}.html">
+      <time datetime="${formattedDate}">${readableDate}</time>
+    </a>
+  </div>`;
+
   if (cell.mediaFilename) {
     // TODO: Use var for media dir in fragment below.
-    cell.htmlFragment = `<li class="media-pane">
-    <div class="media-time-stamp media-meta">
-      <a href="${cell.id}.html">
-        <time datetime="${formattedDate}">${readableDate}</time>
-      </a>
-    </div>`;
-
-    if (cell.mediaFilename) {
-      if (cell.isVideo) {
-        cell.htmlFragment += `<video controls loop="true" preload="metadata"
-          src="media/${cell.mediaFilename}"></video>`;
-      } else {
-        cell.htmlFragment += `<img src="media/${cell.mediaFilename}" alt="${
-          cell.caption
-        }"></video>`;
-      }
-      cell.htmlFragment += `<div class="media-caption media-meta">
-        <a href="${cell.id}.html">${cell.caption}</a></div>
-      </li>`;
+    if (cell.isVideo) {
+      cell.htmlFragment += `<video controls loop="true" preload="metadata"
+        src="media/${cell.mediaFilename}"></video>`;
     } else {
-      cell.htmlFragment += `<div class="text-caption">${cell.caption}</div>\n`;
+      cell.htmlFragment += `<img src="media/${cell.mediaFilename}" alt="${
+        cell.caption
+      }"></video>`;
     }
+    cell.htmlFragment += `<div class="media-caption entry-meta">
+      <a href="${cell.id}.html">${cell.caption}</a></div>`;
+  } else {
+    cell.htmlFragment += `<div class="text-caption">${cell.caption}</div>\n`;    
   }
+
+  cell.htmlFragment += '</li>';
 
   this.push(cell);
   callNextTick(done);

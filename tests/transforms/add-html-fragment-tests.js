@@ -33,23 +33,23 @@ var cells = [
 ];
 
 var expectedFragments = [
-  `<li class="media-pane">
-  <div class="media-time-stamp media-meta">
+  `<li class="pane">
+  <div class="time-stamp entry-meta">
     <a href="849617236574826497.html">
       <time datetime="2017-04-05T13:38:28.000Z">4/5/2017, 9:38:28 AM</time>
     </a>
   </div>
   <video controls loop="true" preload="metadata" src="videos/pbDLD37qZWDBGBHW.mp4"></video>
-  <div class="media-caption media-meta"><a href="849617236574826497.html">Tv2</a></div>
+  <div class="media-caption entry-meta"><a href="849617236574826497.html">Tv2</a></div>
 </li>`,
-  `<li class="media-pane">
-  <div class="media-time-stamp media-meta">
+  `<li class="pane">
+  <div class="time-stamp entry-meta">
     <a href="849617052130213888.html">
       <time datetime="2017-04-05T13:37:45.000Z">4/5/2017, 9:37:45 AM</time>
     </a>
   </div>
   <video controls loop="true" preload="metadata" src="videos/DPL17ys0-inDTwQW.mp4"></video>
-  <div class="media-caption media-meta"><a href="849617052130213888.html"></a></div>
+  <div class="media-caption entry-meta"><a href="849617052130213888.html"></a></div>
 </li>`
 ];
 
