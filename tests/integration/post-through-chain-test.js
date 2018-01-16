@@ -26,6 +26,11 @@ var testPackages = [
     buffer: fs.readFileSync(
       __dirname + '/../fixtures/videos/pbDLD37qZWDBGBHW.mp4'
     )
+  },
+  {
+    id: 'test-c-' + randomId(4),
+    date: new Date().toISOString(),
+    caption: 'Just text.'
   }
 ];
 

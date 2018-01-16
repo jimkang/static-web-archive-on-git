@@ -5,6 +5,7 @@ var queue = require('d3-queue').queue;
 var cloneDeep = require('lodash.clonedeep');
 var defaults = require('lodash.defaults');
 var encoders = require('../base-64-encoders');
+var callNextTick = require('call-next-tick');
 
 function BufferToGit(opts) {
   var mediaDir = opts.mediaDir;
@@ -37,25 +38,29 @@ function BufferToGit(opts) {
 
     var newCell = omit(cell, 'buffer');
 
-    var bufferGitPayload = {
-      filePath: mediaDir + '/' + newCell.mediaFilename,
-      content: cell.buffer,
-      message: 'static-web-archive-on-git posting media'
-    };
+    if (cell.buffer) {
+      var bufferGitPayload = {
+        filePath: mediaDir + '/' + newCell.mediaFilename,
+        content: cell.buffer,
+        message: 'static-web-archive-on-git posting media'
+      };
 
-    var metadataGitPayload = {
-      filePath: metaDir + '/' + newCell.id + '.json',
-      content: JSON.stringify(newCell),
-      message: 'static-web-archive-on-git posting media metadata'
-    };
+      var metadataGitPayload = {
+        filePath: metaDir + '/' + newCell.id + '.json',
+        content: JSON.stringify(newCell),
+        message: 'static-web-archive-on-git posting media metadata'
+      };
 
-    // It's really important to make these updates serially so that one doesn't commit
-    // between the other's sha-get and commit, thereby changing the branch tip.
-    var q = queue(1);
-    q.defer(githubFileForBuffers.update, bufferGitPayload);
-    q.defer(wait);
-    q.defer(githubFileForText.update, metadataGitPayload);
-    q.awaitAll(sb(passPackage, done));
+      // It's really important to make these updates serially so that one doesn't commit
+      // between the other's sha-get and commit, thereby changing the branch tip.
+      var q = queue(1);
+      q.defer(githubFileForBuffers.update, bufferGitPayload);
+      q.defer(wait);
+      q.defer(githubFileForText.update, metadataGitPayload);
+      q.awaitAll(sb(passPackage, done));
+    } else {
+      callNextTick(passPackage);
+    }
 
     function passPackage() {
       newCell.postedToGit = true;

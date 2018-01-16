@@ -35,6 +35,11 @@ var cells = [
         'http://jimkang.com/static-web-archive-on-git/tests/fixtures/videos/DPL17ys0-inDTwQW.mp4'
     },
     buffer: fs.readFileSync(videoBasePath + 'DPL17ys0-inDTwQW.mp4')
+  },
+  {
+    id: '12039472034',
+    caption: 'No buffer at all.',
+    date: 'Wed Apr 06 13:37:45 +0000 2017'
   }
 ];
 

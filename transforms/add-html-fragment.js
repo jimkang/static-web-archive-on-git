@@ -19,17 +19,21 @@ function addHTMLFragment(cell, enc, done) {
       </a>
     </div>`;
 
-    if (cell.isVideo) {
-      cell.htmlFragment += `<video controls loop="true" preload="metadata"
-        src="media/${cell.mediaFilename}"></video>`;
+    if (cell.mediaFilename) {
+      if (cell.isVideo) {
+        cell.htmlFragment += `<video controls loop="true" preload="metadata"
+          src="media/${cell.mediaFilename}"></video>`;
+      } else {
+        cell.htmlFragment += `<img src="media/${cell.mediaFilename}" alt="${
+          cell.caption
+        }"></video>`;
+      }
+      cell.htmlFragment += `<div class="media-caption media-meta">
+        <a href="${cell.id}.html">${cell.caption}</a></div>
+      </li>`;
     } else {
-      cell.htmlFragment += `<img src="media/${cell.mediaFilename}" alt="${
-        cell.caption
-      }"></video>`;
+      cell.htmlFragment += `<div class="text-caption">${cell.caption}</div>\n`;
     }
-    cell.htmlFragment += `<div class="media-caption media-meta">
-      <a href="${cell.id}.html">${cell.caption}</a></div>
-    </li>`;
   }
 
   this.push(cell);
