@@ -1,5 +1,5 @@
 var titleRefRegex = /_TITLE_REF/g;
-var footerScriptRegex = /_FOOTER_SCRIPT_REF/g;
+var footerRegex = /_FOOTER_REF/g;
 
 function getHeader(title) {
   return `<html>
@@ -19,16 +19,16 @@ function getHeader(title) {
     <ul class="media-list">`.replace(titleRefRegex, title);
 }
 
-function getFooter({ previousIndexHTML, footerScript }) {
+function getFooter({ previousIndexHTML, footerHTML }) {
   return `</ul>
   </section>
 
   <div class="previous-indexes">${previousIndexHTML}</div>
 
-  _FOOTER_SCRIPT_REF
+  _FOOTER_REF
 
   </body>
-  </html>`.replace(footerScriptRegex, footerScript);
+  </html>`.replace(footerRegex, footerHTML);
 }
 
 module.exports = {

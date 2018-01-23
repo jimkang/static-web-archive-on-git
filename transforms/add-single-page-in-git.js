@@ -8,7 +8,7 @@ var sb = require('standard-bail')();
 function AddSinglePageInGit(opts) {
   const htmlDir = opts.htmlDir;
   const title = opts.title;
-  const footerScript = opts.footerScript;
+  const footerHTML = opts.footerHTML;
 
   var githubFileForText = GitHubFile(
     defaults(cloneDeep(opts), {
@@ -25,7 +25,7 @@ function AddSinglePageInGit(opts) {
       '\n' +
       cellToAdd.htmlFragment +
       '\n' +
-      template.getFooter({ previousIndexHTML: '', footerScript });
+      template.getFooter({ previousIndexHTML: '', footerHTML });
 
     var filePath = '';
     if (htmlDir) {

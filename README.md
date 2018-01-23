@@ -20,7 +20,7 @@ So, in your program, you create an instance of this module like so:
     var StaticWebArchiveOnGit = require('-static-web-archive-on-git');
     var staticWebStream = StaticWebArchiveOnGit({
       title: 'Vape bot archives',
-      footerScript: `<div>Bottom of page</div>`,
+      footerHTML: `<div>Bottom of page</div>`,
       config: {
         gitRepoOwner: 'your GitHub username',
         gitToken: 'Your personal access token from https://github.com/settings/tokens (the token needs repo access)',

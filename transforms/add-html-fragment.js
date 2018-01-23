@@ -27,10 +27,11 @@ function addHTMLFragment(cell, enc, done) {
         cell.caption
       }"></video>`;
     }
-    cell.htmlFragment += `<div class="media-caption entry-meta">
-      <a href="${cell.id}.html">${cell.caption}</a></div>`;
+    cell.htmlFragment += `<div class="media-caption entry-meta">${
+      cell.caption
+    }</div>`;
   } else {
-    cell.htmlFragment += `<div class="text-caption">${cell.caption}</div>\n`;    
+    cell.htmlFragment += `<div class="text-caption">${cell.caption}</div>\n`;
   }
 
   cell.htmlFragment += '</li>';

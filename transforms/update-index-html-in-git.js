@@ -12,7 +12,7 @@ var template = require('../page-template');
 function UpdateIndexHTMLInGit(opts) {
   const htmlDir = opts.htmlDir;
   const title = opts.title;
-  const footerScript = opts.footerScript;
+  const footerHTML = opts.footerHTML;
 
   var githubFileForText = GitHubFile(
     defaults(cloneDeep(opts), {
@@ -37,7 +37,7 @@ function UpdateIndexHTMLInGit(opts) {
         header: template.getHeader(title),
         footer: template.getFooter({
           previousIndexHTML: getPreviousIndexHTML(page),
-          footerScript
+          footerHTML
         }),
         pageSpec: page
       });
