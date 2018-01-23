@@ -13,6 +13,7 @@ var testPackages = [
     date: new Date().toISOString(),
     mediaFilename: 'smidgeo_headshot.jpg',
     caption: 'Smidgeo!',
+    altText: 'A picture of Smidgeo!',
     buffer: fs.readFileSync(
       __dirname + '/../fixtures/images/smidgeo_headshot.jpg'
     )
