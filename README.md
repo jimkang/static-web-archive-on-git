@@ -1,6 +1,8 @@
 static-web-archive-on-git
 ==================
 
+**[Now deprecated in favor of https://github.com/jimkang/static-web-archive-on-git](https://github.com/jimkang/static-web-archive)**
+
 A module that maintains a static web archive that you can add to piece by piece. For image bots in particular.
 
 Requires a version of Node that supports ES 6.
